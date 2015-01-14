@@ -1,0 +1,14 @@
+body{
+  max-width: 500px;
+  margin: 2em auto;
+  font-size: 20px;
+  background: url('../img/triangular.png');
+}
+
+h1{
+  text-align: center;
+}
+
+.buttons-wrapper{
+  text-align: center;
+}
