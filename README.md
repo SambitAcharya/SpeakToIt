@@ -1,3 +1,3 @@
 # SpeakToIt
 
-An application which acts as a Text To Speech and Speech To Text Converter. Work on the web app is going on.
+An application which acts as a Text To Speech and Speech To Text Converter. Work on the web app is going on. The WebToSpeech API is used to make the application.
