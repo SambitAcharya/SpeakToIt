@@ -43,6 +43,7 @@ def changeText(text):
                 placeholder_array.append(placeholder_string)
                 lines.extend(placeholder_array)
 
+    return lines
 def main():
 
     file_name = raw_input("Enter the name of the file.\n")
