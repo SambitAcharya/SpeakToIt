@@ -25,9 +25,23 @@ def changeText(text):
     for index,value in enumerate(text_list):
 
         if (index%2 == 0):
-            lines.append(val)
+            lines.append(value)
         else:
-            connected_string = ''.join((lines.pop(), val))
+            connected_string = ''.join((lines.pop(), value))
+            if len(connected_string) < 100:
+                lines.append(connected_string)
+            else:
+                fragments = re.split('( )', connected_string)
+                placeholder_array = []
+                placeholder_string = ""
+                for fragment in fragments:
+                    placeholder_string+=fragment
+                    if len(placeholder_string) > 80:
+                        placeholder_array.append(placeholder_string)
+                        placeholder_string = ""
+
+                placeholder_array.append(placeholder_string)
+                lines.extend(placeholder_array)
 
 def main():
 
