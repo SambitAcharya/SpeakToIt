@@ -2,25 +2,12 @@ import re
 import os
 import sys
 import urllib,urllib2
+import time
 
-def downloadMp3File(lines,language,url):
-
-    # mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
-    # mp3file = urllib2.urlopen(url)
-    # output = open('test.mp3','wb')
-    # output.write(mp3file.read())
-    # output.close()
-    for index,line in enumerate(lines):
-        query_parameters = {"tl":language,'q':line, 'total': len(text_lines),'idx':index}
-        url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' +unicode_urlencode(query_parameters)
-        headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
-        request  = urllib2.Request(url,'',headers)
-        if len(line)>0:
-            try:
-                response = urllib2.urlopen(request)
-                url.write(response.read())
-            except urllib2.HTTPError as e:
-                print ('%s' %e)
+def unicode_urlencode(parameters):
+    if isinstance(parameters, dict):
+        parameters = parameters.items()
+    return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in parameters])
 
 def sanitizeText(text):
 
@@ -56,10 +43,31 @@ def changeText(text):
 
     return lines
 
-def unicode_urlencode(parameters):
-    if isinstance(parameters, dict):
-        parameters = parameters.items()
-    return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in parameters])
+def downloadMp3File(lines,language,file):
+
+    # mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
+    # mp3file = urllib2.urlopen(file)
+    # output = open('test.mp3','wb')
+    # output.write(mp3file.read())
+    # output.close()
+    for index,line in enumerate(lines):
+        query_parameters = {"tl":language,'q':line, 'total': len(text_lines),'idx':index}
+        file = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' +unicode_urlencode(query_parameters)
+        headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
+        request  = urllib2.Request(file,'',headers)
+        sys.stdout.write('.')
+        sys.stdout.flush()
+        if len(line)>0:
+            try:
+                response = urllib2.urlopen(request)
+                file.write(response.read())
+                time.sleep(0.5)
+            except urllib2.HTTPError as e:
+                print ('%s' %e)
+
+    print 'Saved MP3 to %s' %(file.name)
+    file.close()
+
 
 def main():
 
