@@ -46,7 +46,10 @@ def changeText(text):
     return lines
 
 def unicode_urlencode(params):
-    return 0
+    if isinstance(params, dict):
+        params = params.items()
+    return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params])
+        
 def main():
 
     file_name = raw_input("Enter the name of the file.\n")
