@@ -44,6 +44,9 @@ def changeText(text):
                 lines.extend(placeholder_array)
 
     return lines
+
+def unicode_urlencode(params):
+    return 0
 def main():
 
     file_name = raw_input("Enter the name of the file.\n")
