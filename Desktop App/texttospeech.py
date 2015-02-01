@@ -53,7 +53,7 @@ def downloadMp3File(lines,language,file):
     # output.write(mp3file.read())
     # output.close()
     for index,line in enumerate(lines):
-        query_parameters = {"tl":language,'q':line, 'total': len(text_lines),'idx':index}
+        query_parameters = {"tl":language,'q':line, 'total': len(lines),'idx':index}
         file = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' +unicode_urlencode(query_parameters)
         headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
         request  = urllib2.Request(file,'',headers)
@@ -96,7 +96,7 @@ def main():
     play = args.play
     downloadMp3File(lines,language,output)
 
-    if args.play == True:
+    if play == True:
         play(output.name)
 
 
@@ -105,15 +105,13 @@ if __name__ == '__main__':
     description = 'Text To Speech Converter'
     parser = argparse.ArgumentParser(prog='GoogleTextToSpeech', description=description,epilog='Just do it')
 
-    group = parser.add_argument('-f','--file', type=argparse.FileType('r'), help='File to read text from.')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-f','--file', type=argparse.FileType('r'), help='File to read text from.')
     group.add_argument('-s', '--string', action='store', nargs='+', help='A string of text to convert to speech.')
 
-    parser.add_argument('-o','--output', action='store', nargs='?',
-						help='Filename to output audio to',
-						type=argparse.FileType('w'),
-						default='VoicedText.mp3')
-	parser.add_argument('-l','--language', action='store', nargs='?', help='Language to output text to.', default='en')
+    parser.add_argument('-o','--output', action='store', nargs='?',help='Filename to output audio to',type=argparse.FileType('w'),default='VoicedText.mp3')
+    parser.add_argument('-l','--language', action='store', nargs='?',help='Language to output text to.', default='en')
 
-	parser.add_argument('-p','--play', action='store_true', help='Play the speech if your computer allows it.')
+    parser.add_argument('-p','--play', action='store_true', help='Play the speech if your computer allows it.')
 
     main()
