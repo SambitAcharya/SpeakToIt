@@ -99,4 +99,20 @@ def main():
         play(output.name)
 
 
-main()
+if __name__ == '__main__':
+
+    description = 'Text To Speech Converter'
+    parser = argparse.ArgumentParser(prog='GoogleTextToSpeech', description=description,epilog='Just do it')
+
+    group = parser.add_argument('-f','--file', type=argparse.FileType('r'), help='File to read text from.')
+    group.add_argument('-s', '--string', action='store', nargs='+', help='A string of text to convert to speech.')
+
+    parser.add_argument('-o','--output', action='store', nargs='?',
+						help='Filename to output audio to',
+						type=argparse.FileType('w'),
+						default='out.mp3')
+	parser.add_argument('-l','--language', action='store', nargs='?', help='Language to output text to.', default='en')
+
+	parser.add_argument('-p','--play', action='store_true', help='Play the speech if your computer allows it.')
+
+    main()
