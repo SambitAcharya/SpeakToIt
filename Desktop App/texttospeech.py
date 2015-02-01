@@ -4,6 +4,7 @@ import sys
 import urllib,urllib2
 import time
 import subprocess
+import argparse
 
 def unicode_urlencode(parameters):
     if isinstance(parameters, dict):
@@ -110,7 +111,7 @@ if __name__ == '__main__':
     parser.add_argument('-o','--output', action='store', nargs='?',
 						help='Filename to output audio to',
 						type=argparse.FileType('w'),
-						default='out.mp3')
+						default='VoicedText.mp3')
 	parser.add_argument('-l','--language', action='store', nargs='?', help='Language to output text to.', default='en')
 
 	parser.add_argument('-p','--play', action='store_true', help='Play the speech if your computer allows it.')
