@@ -7,6 +7,7 @@ import subprocess
 import argparse
 
 def unicode_urlencode(parameters):
+
     if isinstance(parameters, dict):
         parameters = parameters.items()
     return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in parameters])
@@ -47,11 +48,6 @@ def changeText(text):
 
 def downloadMp3File(lines,language,file):
 
-    # mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
-    # mp3file = urllib2.urlopen(file)
-    # output = open('test.mp3','wb')
-    # output.write(mp3file.read())
-    # output.close()
     for index,line in enumerate(lines):
         query_parameters = {"tl":language,'q':line, 'total': len(lines),'idx':index}
         url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' + unicode_urlencode(query_parameters)
@@ -76,7 +72,6 @@ def play(file_name):
 
 def main():
 
-    # file_name = raw_input("Enter the name of the file.\n")
     if len(sys.argv)==1:
         sys.exit(1)
 
@@ -88,9 +83,6 @@ def main():
         text = ''.join(map(str,args.string))
 
     lines = changeText(text)
-    # file = open(file_name,'r')
-    # text = file.read()
-    # print(text)
     language = args.language
     output = args.output
     play = args.play
