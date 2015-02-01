@@ -90,6 +90,13 @@ def main():
     # file = open(file_name,'r')
     # text = file.read()
     # print(text)
+    language = args.language
+    output = args.output
+    play = args.play
+    downloadMp3File(lines,language,output)
+
+    if args.play == True:
+        play(output.name)
 
 
 main()
