@@ -1,15 +1,15 @@
 import re
 import os
 import sys
-import urllib2
+import urllib,urllib2
 
-def downloadMp3File(url):
+def downloadMp3File(lines,url):
 
     # mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
-    mp3file = urllib2.urlopen(url)
-    output = open('test.mp3','wb')
-    output.write(mp3file.read())
-    output.close()
+    # mp3file = urllib2.urlopen(url)
+    # output = open('test.mp3','wb')
+    # output.write(mp3file.read())
+    # output.close()
 
 def sanitizeText(text):
 
@@ -49,7 +49,7 @@ def unicode_urlencode(params):
     if isinstance(params, dict):
         params = params.items()
     return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params])
-        
+
 def main():
 
     file_name = raw_input("Enter the name of the file.\n")
