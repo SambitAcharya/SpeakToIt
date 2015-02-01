@@ -3,6 +3,7 @@ import os
 import sys
 import urllib,urllib2
 import time
+import subprocess
 
 def unicode_urlencode(parameters):
     if isinstance(parameters, dict):
@@ -71,12 +72,24 @@ def downloadMp3File(lines,language,file):
 def play(file_name):
     if sys.platform == 'linux' or sys.platform == 'linux2':
         subprocess.call(['play',file_name])
+
 def main():
 
-    file_name = raw_input("Enter the name of the file.\n")
-    file = open(file_name,'r')
-    text = file.read()
+    # file_name = raw_input("Enter the name of the file.\n")
+    if len(sys.argv)==1:
+        sys.exit(1)
+
+    args = parser.parse_args()
+
+    if args.file:
+        text = args.file.read()
+    if args.string:
+        text = ''.join(map(str,args.string))
+
+    lines = changeText(text)
+    # file = open(file_name,'r')
+    # text = file.read()
     # print(text)
-    changeText(text)
+
 
 main()
