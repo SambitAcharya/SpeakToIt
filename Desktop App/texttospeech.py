@@ -86,10 +86,21 @@ def downloadMp3File(lines,language,file):
     file.close()
 
 def play(file_name):
-    
+
+    '''
+
+        Function to play the file after detecting the platform
+        Supports only linux and OSX.
+
+    '''
+
     if sys.platform == 'linux' or sys.platform == 'linux2':
+        # Linux
         subprocess.call(['play',file_name])
 
+    elif sys.platform == "darwin":
+		# OS X
+		subprocess.call(["afplay", filename])
 def main():
 
     if len(sys.argv)==1:
