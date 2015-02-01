@@ -7,6 +7,7 @@ import time
 import subprocess
 import argparse
 
+#Functions
 def unicode_urlencode(parameters):
 
     '''
@@ -21,6 +22,11 @@ def unicode_urlencode(parameters):
 
 def sanitizeText(text):
 
+    '''
+
+        Function to sanitize the text which is to be sent to the API
+
+    '''
     text = text.replace('\n','')
     text_list = re.split('(\,|\.|\;|\:)', text)
     return text_list
