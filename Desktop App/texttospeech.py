@@ -54,9 +54,9 @@ def downloadMp3File(lines,language,file):
     # output.close()
     for index,line in enumerate(lines):
         query_parameters = {"tl":language,'q':line, 'total': len(lines),'idx':index}
-        file = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' +unicode_urlencode(query_parameters)
+        url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' + unicode_urlencode(query_parameters)
         headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
-        request  = urllib2.Request(file,'',headers)
+        request  = urllib2.Request(url,'',headers)
         sys.stdout.write('.')
         sys.stdout.flush()
         if len(line)>0:
