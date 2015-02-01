@@ -68,7 +68,9 @@ def downloadMp3File(lines,language,file):
     print 'Saved MP3 to %s' %(file.name)
     file.close()
 
-
+def play(file_name):
+    if sys.platform == 'linux' or sys.platform == 'linux2':
+        subprocess.call(['play',file_name])
 def main():
 
     file_name = raw_input("Enter the name of the file.\n")
