@@ -10,6 +10,10 @@ def downloadMp3File(lines,url):
     # output = open('test.mp3','wb')
     # output.write(mp3file.read())
     # output.close()
+    for index,line in enumerate(lines):
+        query_parameters = {"l":language,'q':line, 'total': len(text_lines),'index':index}
+        url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ unicode_urlencode(query_parameters)
+        headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
 
 def sanitizeText(text):
 
@@ -45,10 +49,10 @@ def changeText(text):
 
     return lines
 
-def unicode_urlencode(params):
-    if isinstance(params, dict):
-        params = params.items()
-    return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params])
+def unicode_urlencode(parameters):
+    if isinstance(parameters, dict):
+        parameters = parameters.items()
+    return urllib.urlencode([(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in parameters])
 
 def main():
 
