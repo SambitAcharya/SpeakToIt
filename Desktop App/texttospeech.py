@@ -3,7 +3,7 @@ import os
 import sys
 import urllib,urllib2
 
-def downloadMp3File(lines,url):
+def downloadMp3File(lines,language,url):
 
     # mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
     # mp3file = urllib2.urlopen(url)
@@ -11,9 +11,16 @@ def downloadMp3File(lines,url):
     # output.write(mp3file.read())
     # output.close()
     for index,line in enumerate(lines):
-        query_parameters = {"l":language,'q':line, 'total': len(text_lines),'index':index}
-        url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ unicode_urlencode(query_parameters)
+        query_parameters = {"tl":language,'q':line, 'total': len(text_lines),'idx':index}
+        url = 'http://translate.google.com/translate_tts?ie=UTF-8'+ '&' +unicode_urlencode(query_parameters)
         headers = {'Host':'translate.google.com','User-Agent':'Mozilla 5.10'}
+        request  = urllib2.Request(url,'',headers)
+        if len(line)>0:
+            try:
+                response = urllib2.urlopen(request)
+                url.write(response.read())
+            except urllib2.HTTPError as e:
+                print ('%s' %e)
 
 def sanitizeText(text):
 
