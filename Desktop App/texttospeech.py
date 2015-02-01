@@ -107,7 +107,16 @@ def play(file_name):
     elif sys.platform == "darwin":
 		# OS X
 		subprocess.call(["afplay", filename])
+
+#Main Function
 def main():
+
+    '''
+
+        Function to collect arguments and pass it on to functions and generate
+        the output.
+
+    '''
 
     if len(sys.argv)==1:
         sys.exit(1)
