@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Web Speech API Demo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.icon-large.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+
+    <h1>Speech To Text Converter</h1><br><br>
+
+    <textarea id="transcription" placeholder="Speak Your Mind!!"></textarea>
+
+
+    <label class="hidden"><input type="radio" name="recognition-type" value="final" checked="checked" /> Final only</label>
+    <label class="hidden"><input type="radio" name="recognition-type" value="interim"/> Interim</label>
+
+    <h3>Log</h3>
+    <div id="log"></div>
+
+    <div class="buttons-wrapper">
+      <button type="button" id="button-play-ws" class="btn btn-success btn-lg button-demo"> <i class="icon-microphone icon-large icon-white"></i> Record </button>
+      <button type="button" id="button-stop-ws" class="btn btn-danger btn-lg button-demo"> <i class="icon-stop icon-large icon-white"></i>Stop </button>
+      <button type="button" id="clear-all" class="btn btn-primary btn-lg button-demo"><i class="icon-refresh icon-large icon-white"></i> Clear </button>
+    </div>
+
+    <span id="ws-unsupported" class="hidden">API not supported</span>
+    <script src="js/script.js"></script>
+
+  </body>
+
+</html>
