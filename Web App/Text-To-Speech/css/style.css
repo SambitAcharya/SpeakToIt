@@ -1,3 +1,7 @@
+#container h1{
+  margin: 20px auto;
+}
+
 textarea {
   display: block;
   font-family: "Helvetica Neue", Arial, sans-serif;
