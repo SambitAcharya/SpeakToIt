@@ -1,0 +1,14 @@
+textarea {
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dedede;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  padding: 11px 25px;
+  padding-left: 55px;
+  width: 90%;
+  height: 180px;
+  color: #777;
+}
