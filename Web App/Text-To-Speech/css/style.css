@@ -11,4 +11,13 @@ textarea {
   width: 90%;
   height: 180px;
   color: #777;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+
+  transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+  -o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
 }
