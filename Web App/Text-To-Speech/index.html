@@ -11,12 +11,13 @@
 </head>
 
 <body>
+
 	<div id="container">
-		<textarea id="text" cols="45" rows="3">Hello world</textarea>
+		<textarea name="text" id="text" placeholder="Enter a cool message..." tabindex="5" class="txtblock"></textarea>
 		<select id="voiceselection"></select>
 		<input onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" type="button" value="Play" />
-	 
-	</div>
+	 </div>
+
 </body>
 
 </html>
