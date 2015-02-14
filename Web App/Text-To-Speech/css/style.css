@@ -35,3 +35,21 @@ outline: 0 none;
 textarea.txtblock {
   background: #fff url('http://media02.hongkiat.com/responsive-css3-form/speech.png') 5px 4px no-repeat;
 }
+
+#buttons #submitbtn {
+  display: block;
+  float: left;
+  height: 3em;
+  padding: 0 1em;
+  border: 1px solid;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: 0px 1px 0px #222;
+  whitewhite-space: nowrap;
+  word-wrap: normal;
+  vertical-align: middle;
+  cursor: pointer;
+
+}
